@@ -2,9 +2,7 @@ from flask import Flask,request,jsonify,render_template
 import os
 import torch
 from torch.optim import AdamW
-
-from utils_bert import get_response,predict_class, get_model_type
-
+from Flask_application.utils_bert import get_response, predict_class, get_model_type
 
 app = Flask(__name__,template_folder='templates')
 
