@@ -45,8 +45,9 @@ class DistilBERTPredictor:
         else:
             self.device = device
             
-        # Use absolute model directory and model file
-        self.model_dir = r'C:\Users\rayaan\Desktop\FAST-bot\model'
+        # Use relative model directory and model file
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.model_dir = os.path.join(script_dir, '..', 'model')
         self.model_file = os.path.join(self.model_dir, 'distilbert_chatbot_model_best.pth')
         
         # Load tokenizer from model directory
@@ -69,7 +70,6 @@ class DistilBERTPredictor:
         self.model.eval()
         
         # Load intents for responses
-        script_dir = os.path.dirname(os.path.abspath(__file__))
         intents_path = os.path.join(script_dir, '..', 'Model_training', 'chatbot_intents.json')
         with open(intents_path, 'r', encoding='utf-8') as f:
             self.intents = json.load(f)
